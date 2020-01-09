@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 html,
 body,       /* Setting the spacing/centering of each box layer */
 .layer1 {
@@ -172,5 +171,3 @@ button[disabled] {
         font-size: 0.8rem;
     }
 }
-
-
