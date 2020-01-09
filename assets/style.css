@@ -13,18 +13,11 @@ body,       /* Setting the spacing/centering of each box layer */
 }
 
 body {
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
     background-color: rgb(0, 0, 0);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .layer1 {
-    flex: 1;
-    order: 1;
     padding: 30px;
 }
 
