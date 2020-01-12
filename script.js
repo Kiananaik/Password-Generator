@@ -4,10 +4,10 @@ var numChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", "."];
 
 function userChooses() {
-    var yesUpper = confirm("Should we put upper case letters in your password? Click cancel for no.");
-    var yesLower = confirm("Should we put lower case letters in your password? Click cancel for no.");
-    var yesNum = confirm("Should we put numbers in your password? Click cancel for no.");
-    var yesSpecial = confirm("Should we put special characters into your password? Click cancel for no.");
+    var yesUpper = confirm("Should we put upper case letters in your password? Click OK for yes & cancel for no.");
+    var yesLower = confirm("Should we put lower case letters in your password?  Click OK for yes & cancel for no.");
+    var yesNum = confirm("Should we put numbers in your password? Click OK for yes & cancel for no.");
+    var yesSpecial = confirm("Should we put special characters into your password? Click OK for yes & cancel for no.");
     if (yesUpper === false && yesLower === false && yesNum === false && yesSpecial === false) {
         alert("You gotta say OK to at least one of them, bub...");
         return;
@@ -26,6 +26,7 @@ function userChooses() {
     }
     // My first working object. It's gonna keep the values from this function.
     var userChoice = {yesUpper: yesUpper, yesLower: yesLower, yesNum: yesNum, yesSpecial: yesSpecial, passLength: passLength};
+    console.log(userChoice);
     return userChoice;
     // creates userChoice from this function for future use.
 }
@@ -51,6 +52,7 @@ function checkPass() {
     }
     var filterCheck = {foundUpper: foundUpper, foundLower: foundLower, foundNum: foundNum, foundSpecial: foundSpecial};        
     filterCheck = filterCheck.push(userChoice[Object.keys(userChoice)[4]]);
+    console.log(filterCheck);
     var check = _.isEqual(filterCheck, userChoice);
     console.log(check);
     if (check) {
@@ -64,10 +66,9 @@ function checkPass() {
 }
 
 function generatePass() {
-    var choices = userChooses();
+    var choices = userChoose();
     var fullArr = [];
     var finalPass = [];
-    // var eachCharArr = [];
     if (choices.yesUpper) {
         fullArr = fullArr.concat(upperChar);
     }
@@ -85,12 +86,11 @@ function generatePass() {
     // by one until you have the desired amount of password characters.
     do {
         for (var i = 0; i < choices.passLength; i++) {
-            // var randChar = fullArr[Math.floor(Math.random() * fullArr.length)]; 
-            finalPass = finalPass.push(fullArr[Math.floor(Math.random() * fullArr.length)]);
-            // return checkPass; !!!!!!!!!!!!!!!!!!!!! Doesn't make sense.
+            finalPass.push(fullArr[Math.floor(Math.random() * fullArr.length)]);
         }
+        console.log(finalPass);
     } while (checkPass() === false);
-    return generatePass() = finalPass;    // -------- WHERE THE ACTUAL PASSWORD IS DECIDED ON!!!!!!!
+    return finalPass;    // -------- WHERE THE ACTUAL PASSWORD IS DECIDED ON!!!!!!!
 }
 // Get references to the #copy and #generate elements
 var copyBtn = document.querySelector(".copy");
