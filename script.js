@@ -67,7 +67,7 @@ function checkPass() {
 }
 
 function generatePass() {
-    var choices = userChoose();
+    var choices = userChooses();
     var fullArr = [];
     var finalPass = [];
     if (choices.yesUpper) {
