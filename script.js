@@ -33,36 +33,50 @@ function userChooses() {
 
 // I want to make sure that at least 1 of each kind of desired 
 // character was actually chosen.
-function checkPass() {
+function checkPass(choices, finalPass) {
+    var foundUpper = true;
+    var foundLower = true;
+    var foundNum = true;
+    var foundSpecial = true;
     if (choices.yesUpper) {
-        const foundUpper = finalPass.some(r=> upperChar.indexOf(r) >= 0);  
-        return foundUpper;
+        foundUpper = finalPass.some(r=> upperChar.indexOf(r) >= 0);  
+    }
+    else {
+        foundUpper = false;
     }
     if (choices.yesLower) {
-        const foundLower = finalPass.some(r=> lowerChar.indexOf(r) >= 0);
-        return foundLower;
+        foundLower = finalPass.some(r=> lowerChar.indexOf(r) >= 0);
+    }
+    else {
+        foundLower = false;
     }
     if (choices.yesNum) {
-        const foundNum = finalPass.some(r=> numChar.indexOf(r) >= 0);
-        return foundNum;
+        foundNum = finalPass.some(r=> numChar.indexOf(r) >= 0);
+    }
+    else {
+        foundNum = false;
     }
     if (choices.yesSpecial) {
-        const foundSpecial = finalPass.some(r=> specialChar.indexOf(r) >= 0);
-        return foundSpecial;
+        foundSpecial = finalPass.some(r=> specialChar.indexOf(r) >= 0);
     }
-    var filterCheck = {foundUpper: foundUpper, foundLower: foundLower, foundNum: foundNum, foundSpecial: foundSpecial};        
-    filterCheck = filterCheck.push(userChoice[Object.keys(userChoice)[4]]);
+    else {
+        foundSpecial = false;
+    }
+    var choices4 = choices.passLength;
+    var filterCheck = {foundUpper: foundUpper, foundLower: foundLower, foundNum: foundNum, foundSpecial: foundSpecial, choices4: choices4};        
+    // filterCheck = filterCheck.push(choices[Object.keys(choices[4])]);
     console.log(filterCheck);
-    // return filterCheck;
-    var check = _.isEqual(filterCheck, userChoice);
-    console.log(check);
-    if (check) {
-        finalPass = finalPass.join();
-        return checkPass() = true;
+
+    // var check = _.isEqual(filterCheck, choices);
+    // console.log(check);
+    console.log(foundNum === choices.yesNum);
+    if ((foundUpper === choices.yesUpper) && (foundLower === choices.yesLower) && (foundNum === choices.yesNum) && (foundSpecial === choices.yesSpecial)) {
+        finalPass = finalPass.join(); // Make string without commas!!!!!!!!!!!!!!!!!!!!!!!!!!! D:<
+        return true;
     }
     else {
         finalPass.length = 0;
-        return checkPass() = false;
+        return false;
     }
 }
 
@@ -90,7 +104,7 @@ function generatePass() {
             finalPass.push(fullArr[Math.floor(Math.random() * fullArr.length)]);
         }
         console.log(finalPass);
-    } while (checkPass() === false);
+    } while (checkPass(choices, finalPass) === false);
     return finalPass;    // -------- WHERE THE ACTUAL PASSWORD IS DECIDED ON!!!!!!!
 }
 // Get references to the #copy and #generate elements
