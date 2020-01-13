@@ -53,7 +53,7 @@ function checkPass() {
     var filterCheck = {foundUpper: foundUpper, foundLower: foundLower, foundNum: foundNum, foundSpecial: foundSpecial};        
     filterCheck = filterCheck.push(userChoice[Object.keys(userChoice)[4]]);
     console.log(filterCheck);
-    return filterCheck;
+    // return filterCheck;
     var check = _.isEqual(filterCheck, userChoice);
     console.log(check);
     if (check) {
