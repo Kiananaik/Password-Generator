@@ -117,9 +117,9 @@ function writePass() {
     var pass = generatePass();
     var passText = document.querySelector(".password");
 //  pass = JSON.stringify(pass);   //<-This was trash.
-    pass = pass.join();
-    passText.value = pass;
-  
+    // pass = pass.join();
+    passText.value = pass.join();
+    
 
     copyBtn.removeAttribute("disabled");
     copyBtn.focus();
