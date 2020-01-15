@@ -71,7 +71,8 @@ function checkPass(choices, finalPass) {
     // console.log(check);
     console.log(foundNum === choices.yesNum);
     if ((foundUpper === choices.yesUpper) && (foundLower === choices.yesLower) && (foundNum === choices.yesNum) && (foundSpecial === choices.yesSpecial)) {
-        finalPass = finalPass.join(); // Make string without commas!!!!!!!!!!!!!!!!!!!!!!!!!!! D:<
+        //finalPass = finalPass.join(); // Make string without commas!!!!!!!!!!!!!!!!!!!!!!!!!!! D:<
+        // finalPass = JSON.stringify(finalPass);
         return true;
     }
     else {
@@ -115,7 +116,9 @@ var generateBtn = document.querySelector(".generate");
 function writePass() {
   var pass = generatePass();
   var passText = document.querySelector(".password");
-  passText.value = pass;
+  //passText.value = pass
+  pass = JSON.stringify(pass);
+
   copyBtn.removeAttribute("disabled");
   copyBtn.focus();
 }
