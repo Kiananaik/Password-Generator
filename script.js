@@ -118,7 +118,7 @@ function writePass() {
     var passText = document.querySelector(".password");
 //  pass = JSON.stringify(pass);   //<-This was trash.
     // pass = pass.join();
-    passText.value = pass.join();
+    passText.value = pass.join(''); //putting nothing in single quotes to rid of comma.
     
 
     copyBtn.removeAttribute("disabled");
