@@ -116,8 +116,9 @@ var generateBtn = document.querySelector(".generate");
 function writePass() {
   var pass = generatePass();
   var passText = document.querySelector(".password");
-  //passText.value = pass
   pass = JSON.stringify(pass);
+  passText.value = pass;
+  
 
   copyBtn.removeAttribute("disabled");
   copyBtn.focus();
