@@ -114,20 +114,21 @@ var generateBtn = document.querySelector(".generate");
 
 // Write password to the .password input
 function writePass() {
-  var pass = generatePass();
-  var passText = document.querySelector(".password");
-  pass = JSON.stringify(pass);
-  passText.value = pass;
+    var pass = generatePass();
+    var passText = document.querySelector(".password");
+//  pass = JSON.stringify(pass);   //<-This was trash.
+    pass = pass.join();
+    passText.value = pass;
   
 
-  copyBtn.removeAttribute("disabled");
-  copyBtn.focus();
+    copyBtn.removeAttribute("disabled");
+    copyBtn.focus();
 }
 function copyToClipboard() {
-  var passText = document.querySelector(".password");
-  passText.select();
-  document.execCommand("copy");
-  alert("Your password " + passText.value + " was copied to your clipboard.");
+    var passText = document.querySelector(".password");
+    passText.select();
+    document.execCommand("copy");
+    alert("Your password " + passText.value + " was copied to your clipboard.");
 }
 
 // Add event listener to generate button
